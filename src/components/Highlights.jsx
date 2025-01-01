@@ -8,14 +8,25 @@ const Highlights = () => {
     gsap.to("#title", {
       opacity: 1,
       y: 0,
+      scrollTrigger: {
+        trigger: "#title",
+        start: "-10% bottom",
+        toggleActions: "play reset play reset", // Reset the animation when scrolling back
+      },
     });
-    gsap.to('.link', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.25,
-    })
+    gsap.to(".link", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.25,
+      scrollTrigger: {
+        trigger: "#title",
+        start: "-10% bottom",
+        toggleActions: "play reset play reset", // Reset the animation when scrolling back
+      },
+    });
   }, []);
+
   return (
     <section
       id="highlights"
@@ -28,18 +39,17 @@ const Highlights = () => {
           </h1>
           <div className="flex flex-wrap items-end gap-5">
             <p className="link">
-                Watch the film
-                <img src={watchImg} alt="watch" className="ml-2" />
+              Watch the film
+              <img src={watchImg} alt="watch" className="ml-2" />
             </p>
             <p className="link">
-                Watch the event
-                <img src={rightImg} alt="watch" className="ml-2" />
+              Watch the event
+              <img src={rightImg} alt="watch" className="ml-2" />
             </p>
           </div>
         </div>
 
         <VideoCarousel />
-
       </div>
     </section>
   );
